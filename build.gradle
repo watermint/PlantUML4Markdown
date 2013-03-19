@@ -1,0 +1,32 @@
+apply plugin: 'java'
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.4'
+}
+
+repositories {
+  mavenCentral()
+  mavenLocal()
+}
+
+dependencies {
+  compile "net.sourceforge.plantuml:plantuml:7959",
+          "org.jruby:jruby-complete:1.7.3"
+}
+
+task cloneDocuments(type: Copy) {
+  from 'Documents'
+  into "$buildDir/Documents"
+}
+
+task compileMarkdown(type: JavaExec, dependsOn: [cloneDocuments]) {
+  classpath = configurations.compile
+  main = "org.jruby.Main"
+  args "Tools/plantuml4markdown.rb", "$buildDir/Documents"
+}
+
+task compilePlantuml(type: JavaExec, dependsOn: [compileMarkdown]) {
+  classpath = configurations.compile
+  main = "net.sourceforge.plantuml.Run"
+  args "-tsvg", "$buildDir/Documents/**/*.plantuml"
+}
