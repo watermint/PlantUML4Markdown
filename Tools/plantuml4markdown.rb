@@ -1,12 +1,12 @@
 
 class PlantUML4Markdown
-  def self.traverse(path, exts = ['md'])
+  def self.traverse(path, exts = ['md'], depth = 0)
     entries = Dir::entries(path)
     entries.select do |file|
       ext = file.sub(/.*\./, '')
       exts.include?(ext)
     end.each do |file|
-      self.new("#{path}/#{file}").generate
+      self.new("#{path}/#{file}", depth).generate
     end
     entries.delete_if do |file|
       file.start_with?('.')
@@ -14,14 +14,16 @@ class PlantUML4Markdown
       p = "#{path}/#{file}"
       File.directory?(p)
     end.each do |file|
-      self.traverse "#{path}/#{file}", exts
+      self.traverse "#{path}/#{file}", exts, depth + 1
     end
   end
 
-  def initialize(path)
+  def initialize(path, depth)
     @path     = path
     @dirname  = File.dirname path
     @basename = (File.basename path).sub(/\..+?$/, '')
+    @depth    = depth
+    @relative = '../' * @depth
   end
 
   def generate
@@ -53,15 +55,19 @@ class PlantUML4Markdown
 
     open "#{@dirname}/#{@basename}.html", 'w' do |f|
       f.puts <<"HTML"
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 <title>#{@basename}</title>
-
+</head>
+<body>
 <xmp theme="readable" style="display:none;">
 #{converted.join("\n")}
 </xmp>
 
-<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
+<script src="#{@relative}strapdown/strapdown.js"></script>
+</body>
 </html>
 HTML
     end

@@ -21,10 +21,16 @@ task cloneDocuments(type: Copy) {
   into "$buildDir/Documents"
 }
 
-task compileMarkdown(type: JavaExec, dependsOn: [cloneDocuments]) {
+task cloneStrapdown(type: Copy) {
+  from 'Tools/strapdown'
+  into "$buildDir/Documents/strapdown"
+}
+
+task compileMarkdown(type: JavaExec, dependsOn: [cloneDocuments, cloneStrapdown]) {
   classpath = configurations.compile
   main = "org.jruby.Main"
-  args "Tools/plantuml4markdown.rb", "$buildDir/Documents"
+  jvmArgs "-Dfile.encoding=UTF-8"
+  args "-Ku", "Tools/plantuml4markdown.rb", "$buildDir/Documents"
 }
 
 task compilePlantuml(type: JavaExec, dependsOn: [compileMarkdown]) {
