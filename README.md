@@ -12,8 +12,34 @@ PlantUML supports generate sequence diagram OOTB. If you'd like to more diagrams
 
 1. Place your documents under directory Documents with extension .md
 2. Launch gradlew on the project directory
+
+    % ./gradlew
+    :cloneDocuments
+    :cloneStrapdown UP-TO-DATE
+    :compileMarkdown
+    :compilePlantuml
+
+    BUILD SUCCESSFUL
+
+    Total time: 17.13 secs
+
 3. PlantUML4Markdown generates document under the directory build/Documents 
 
 # License
 
-MIT License
+## PlantUML4Markdown
+
+* The MIT License (MIT)
+* Copyright (c) 2013 Takayuki Okazaki
+* https://github.com/watermint/PlantUML4Markdown
+
+## Stripdown.js
+
+* The MIT License (MIT)
+* Copyright (c) 2012 Artur B. Adib
+* http://strapdownjs.com/
+
+## Bootswatch themes
+
+* Apache License Version 2.0
+* http://bootswatch.com/
