@@ -1,5 +1,7 @@
 # PlantUML4Markdown
 
+[![Build Status](https://buildhive.cloudbees.com/job/watermint/job/PlantUML4Markdown/badge/icon)](https://buildhive.cloudbees.com/job/watermint/job/PlantUML4Markdown/)
+
 Generate diagrams of [PlantUML](http://plantuml.sourceforge.net/) markups inside markdown documents, which contains [PlantUML](http://plantuml.sourceforge.net/) markup.
 
 # Prerequisite
