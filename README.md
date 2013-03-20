@@ -6,7 +6,7 @@ Generate diagrams of [PlantUML](http://plantuml.sourceforge.net/) markups inside
 
 # Prerequisite
 
-PlantUML supports generate sequence diagram OOTB. If you'd like to more diagrams like class diagrams, usecase diagrams, activities, etc. Install Graphviz, then configure PATH for it.
+PlantUML supports generate sequence diagram OOTB. If you'd like to use more diagrams like class diagrams, usecase diagrams, activities, etc. Install Graphviz, then configure PATH for it.
 
     brew install graphviz
 
