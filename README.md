@@ -6,6 +6,8 @@ Generate diagrams of [PlantUML](http://plantuml.sourceforge.net/) markups inside
 
 # Prerequisite
 
+PlantUML4Markdown and PlantUML requires Java Runtime. Please install Java SE or OpenJDK.
+
 PlantUML supports generate sequence diagram OOTB. If you'd like to use more diagrams like class diagrams, usecase diagrams, activities, etc. Install Graphviz, then configure PATH for it.
 
     brew install graphviz
