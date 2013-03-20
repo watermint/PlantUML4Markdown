@@ -37,6 +37,7 @@ class PlantUML4Markdown
         if line.start_with?('@startuml') then
           converted << "![Fig. #{uml_count}](#{@basename}-#{uml_count}.svg)"
           u = [line]
+          u << 'skinparam classAttributeIconSize 0'
           while uml_line = f.gets
             u << uml_line
             break if uml_line.start_with?('@enduml')
