@@ -12,18 +12,19 @@ PlantUML supports generate sequence diagram OOTB. If you'd like to more diagrams
 
 1. Place your documents under directory Documents with extension .md
 2. Launch gradlew on the project directory
+3. PlantUML4Markdown generates document under the directory build/Documents 
+
+Internet connnection required during first build. Gradle automatically downloads required libraries.
 
     % ./gradlew
     :cloneDocuments
     :cloneStrapdown UP-TO-DATE
     :compileMarkdown
     :compilePlantuml
-
+    
     BUILD SUCCESSFUL
-
+    
     Total time: 17.13 secs
-
-3. PlantUML4Markdown generates document under the directory build/Documents 
 
 # License
 
